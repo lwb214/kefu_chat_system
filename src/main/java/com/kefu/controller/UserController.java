@@ -3,12 +3,11 @@ package com.kefu.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kefu.mapper.entity.User;
-import com.kefu.service.iservice.IUserService;
+import com.kefu.service.IUserService;
 import com.kefu.util.R;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @Description
@@ -18,11 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("user")
 public class UserController {
+    @Resource
     private IUserService userService;
-    @Autowired
-    public void setUserService(IUserService userService) {
-        this.userService = userService;
-    }
     @GetMapping("get")
     public R getUser(@RequestBody Integer id){
         User user = userService.getById(id);

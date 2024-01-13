@@ -1,6 +1,12 @@
 #????
 server:
   port: 2024
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    #??????
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #?????
 spring:
   datasource:
@@ -8,13 +14,8 @@ spring:
     url: jdbc:mysql://localhost:3306/plane
     username: root
     password: 123456
-mybatis-plus:
-  configuration:
-    cache-enabled: false
-    #??????
-    map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#  redis:
-#    host:192.168.247.128
-#    port:6379
-#    database:0
+  redis:
+    host:192.168.247.128
+    port:6379
+    database:0
+    password:123456
