@@ -1,55 +1,22 @@
 package com.kefu.util;
 
+import com.kefu.enums.ResultEnum;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-/**
- * @ProjectName:
- * @Package: com.kefu.util
- * @ClassName: Result
- * @Author: 路文斌
- * @description: 封装分会数据
- * @date:
- * @version: 1.0
- */
 @Data
+@AllArgsConstructor
 public class Result<T> {
-
-    private String code;
+    private Integer code;
     private String msg;
     private T data;
 
-    public Result() {
+    public static <T> Result<T> success(T data){
+        ResultEnum success = ResultEnum.SUCCESS;
+        return new Result<T>(success.getCode(),success.getMsg(),data);
     }
 
-    public Result(T data) {
-        this.data = data;
-    }
-
-    public static Result success() {
-        Result result = new Result();
-        result.setCode("200");
-        result.setMsg("成功");
-        return result;
-    }
-
-    public static <T> Result<T> success(T data) {
-        Result<T> result = new Result(data);
-        result.setCode("200");
-        result.setMsg("成功~~~");
-        return result;
-    }
-
-    public static <T> Result<T> success(String code, String msg, T data) {
-        Result<T> result = new Result(data);
-        result.setCode(code);
-        result.setMsg(msg);
-        return result;
-    }
-
-    public static Result error(String code, String msg) {
-        Result result = new Result();
-        result.setCode(code);
-        result.setMsg(msg);
-        return result;
+    public static <T> Result<T> fail(ResultEnum param){
+        return new Result<T>(param.getCode(),param.getMsg(),null);
     }
 }
