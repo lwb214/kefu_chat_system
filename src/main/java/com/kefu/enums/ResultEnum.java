@@ -5,6 +5,7 @@ import lombok.Getter;
 @Getter
 public enum ResultEnum {
     SUCCESS(200, "请求成功"),
+    FAIL(911, "请求失败"),
     PARAMS_MISS(1001,"缺少必要参数"),
     EMPTY(1002, "参数不可为空值"),
     SIZE_EXCEED_LIMIT(1003, "长度超过限制"),

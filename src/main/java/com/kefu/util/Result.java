@@ -19,4 +19,8 @@ public class Result<T> {
     public static <T> Result<T> fail(ResultEnum param){
         return new Result<T>(param.getCode(),param.getMsg(),null);
     }
+    public static <T> Result<T> fail(T data){
+        ResultEnum fail = ResultEnum.FAIL;
+        return new Result<T>(fail.getCode(),fail.getMsg(),data);
+    }
 }

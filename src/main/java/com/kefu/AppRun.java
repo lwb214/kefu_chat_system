@@ -11,7 +11,6 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 @Slf4j
 public class AppRun {
-
     public static void main(String[] args) {
         log.info("客服聊天系统后台已启动");
         SpringApplication.run(AppRun.class, args);
