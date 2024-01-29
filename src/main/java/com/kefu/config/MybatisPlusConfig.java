@@ -10,11 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Collections;
 
-/**
- * @Description
- * @Author 路文斌
- * @Date 2024/1/13 22:43
- */
 @EnableTransactionManagement
 @Configuration
 @MapperScan("com.kefu.mapper")

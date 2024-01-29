@@ -1,6 +1,6 @@
 package com.kefu.service.impl;
 
-import com.alibaba.druid.sql.visitor.functions.If;
+
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -15,20 +15,12 @@ import com.kefu.util.JwtUtil;
 import com.kefu.util.R;
 import com.kefu.util.RedisUtil;
 import com.kefu.util.Result;
-import io.jsonwebtoken.Claims;
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.util.Map;
 
-/**
- * @Description
- * @Author 路文斌
- * @Date 2024/1/13 20:40
- */
 @Service
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<BaseMapper<User>, User> implements IUserService{
@@ -48,9 +40,7 @@ public class UserServiceImpl extends ServiceImpl<BaseMapper<User>, User> impleme
     log.info("登录请求:{}", JSON.toJSONString(loginReq));
 
     QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-    queryWrapper.and(qw->{
-        qw.eq("userid",loginReq.getUserid());
-    });
+    queryWrapper.and(qw-> qw.eq("userid",loginReq.getUserid()));
     LoginRes loginRes = new LoginRes();
     //先检验用户是否存在
     User user = userMapper.selectOne(queryWrapper);

@@ -10,12 +10,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.nio.charset.StandardCharsets;
 
-/**
- * @Description
- * @Author 路文斌
- * @Date 2024/1/13 23:47
- *
- */
+
 @Configuration
 @Slf4j
 public class RedisConfig {

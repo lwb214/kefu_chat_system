@@ -2,11 +2,6 @@ package com.kefu.util;
 
 import lombok.Data;
 
-/**
- * @Description
- * @Author 路文斌
- * @Date 2024/1/13 21:23
- */
 @Data
 public class R {
     private int code;

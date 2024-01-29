@@ -9,14 +9,9 @@ import com.kefu.service.IUserService;
 import com.kefu.util.R;
 import com.kefu.util.Result;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * @Description
- * @Author 路文斌
- * @Date 2024/1/13 20:44
- */
+
 @RestController
 @RequestMapping("user")
 public class UserController {

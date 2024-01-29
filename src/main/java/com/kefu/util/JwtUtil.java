@@ -6,11 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Date;
 import java.util.HashMap;
 
-/**
- * @Description
- * @Author 路文斌
- * @Date 2024/1/15 0:34
- */
+
 @Slf4j
 public class JwtUtil {
     //设置密钥
@@ -35,14 +31,12 @@ public class JwtUtil {
                 //过期时间24小时
                 .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000));
         //构建token
-        String token = jwtBuilder.compact();
-        return token;
+        return jwtBuilder.compact();
     }
     //解析token
     public static Claims checkToken(String token) {
         try {
-            Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-            return claims;
+            return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
         } catch (ExpiredJwtException e) {
             log.error("token已过期:{}",token,e);
         } catch (Exception e) {

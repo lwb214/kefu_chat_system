@@ -7,22 +7,12 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 import static com.alibaba.druid.util.StringUtils.isEmpty;
-/**
- * @Description
- * @Author 路文斌
- * @Date 2024/1/14 0:59
- */
+
 @Component
 public class RedisUtil<T> {
     @Resource
     private RedisTemplate<String, T> redisTemplate;
 
-    /**
-     * 获取存储的对象
-     *
-     * @param key key
-     * @return 对象
-     */
     public T getObject(String key) {
         if (isEmpty(key)) {
             return null;
