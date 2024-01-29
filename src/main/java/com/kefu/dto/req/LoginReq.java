@@ -14,6 +14,6 @@ public class LoginReq implements Serializable {
 
     private static final long serialVersionUID = -3604009773196130878L;
 
-    private String username;
+    private String userid;
     private String password;
 }

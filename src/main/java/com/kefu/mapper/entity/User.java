@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @TableName("user")
 public class User extends Model<User> {
-    private Integer id;
-    private Integer userid;
+    private Long id;
+    private String userid;
     private String username;
     private String password;
     private Integer sex;
