@@ -12,13 +12,13 @@ spring:
   #数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/chat
+    url: jdbc:mysql://127.0.0.1:3306/chat
     username: root
     password: 123456
   data:
     #redis配置
     redis:
-      host: 192.168.2.128
+      host: 123.56.171.13
       port: 6379
       database: 0
       password: 123456
