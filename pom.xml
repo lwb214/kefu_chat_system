@@ -11,8 +11,14 @@
     <groupId>com.kefu</groupId>
     <artifactId>kefu_chat_system</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>kefu_chat_system</name>
     <description>kefu_chat_system</description>
+    <modules>
+        <module>chat_tcp</module>
+        <module>chat_decode</module>
+        <module>chat_service</module>
+    </modules>
     <properties>
         <java.version>17</java.version>
     </properties>

@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 ##测试类
-src/test
+chat_service/src/test

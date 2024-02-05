@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com/kefu/mapper")
+@MapperScan(basePackages = "com.kefu.mapper")
 @EnableCaching
 @Slf4j
 public class AppRun {
