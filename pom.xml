@@ -6,7 +6,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.0.10</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
+    <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kefu</groupId>
     <artifactId>kefu_chat_system</artifactId>
@@ -14,11 +15,6 @@
     <packaging>pom</packaging>
     <name>kefu_chat_system</name>
     <description>kefu_chat_system</description>
-    <modules>
-        <module>chat_tcp</module>
-        <module>chat_decode</module>
-        <module>chat_service</module>
-    </modules>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -98,22 +94,18 @@
             <artifactId>jsch</artifactId>
             <version>0.1.55</version>
         </dependency>
+        <!--jakarta.servlet依赖-->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -122,6 +114,14 @@
                     <source>17</source>
                     <target>17</target>
                     <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
 

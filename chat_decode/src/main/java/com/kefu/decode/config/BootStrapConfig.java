@@ -22,4 +22,8 @@ public class BootStrapConfig {
                 "im=" + im +
                 '}';
     }
+
+    public static void main(String[] args) {
+
+    }
 }
