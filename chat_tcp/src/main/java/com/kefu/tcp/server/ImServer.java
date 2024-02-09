@@ -1,6 +1,8 @@
 package com.kefu.tcp.server;
 
 import com.kefu.decode.config.BootStrapConfig;
+import com.kefu.decode.decoder.MessageDecoder;
+import com.kefu.tcp.handler.NettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -36,7 +38,8 @@ public class ImServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-
+                        ch.pipeline().addLast(new MessageDecoder());
+                        ch.pipeline().addLast(new NettyServerHandler());
                     }
                 });
         log.info("TcpServer启动成功！！！");
