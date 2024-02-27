@@ -20,5 +20,5 @@ public class LoginRes  implements Serializable {
 
     private boolean LoginStatus;
     private String token;
-    private String failMessage;
+    private String message;
 }

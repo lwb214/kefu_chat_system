@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.kefu.dto.req.LoginReq;
+import com.kefu.dto.req.RegisterReq;
 import com.kefu.dto.res.LoginRes;
+import com.kefu.dto.res.RegisterRes;
 import com.kefu.enums.RedisKeyPreEnum;
 import com.kefu.mapper.UserMapper;
 import com.kefu.mapper.entity.User;
@@ -31,11 +33,6 @@ public class UserServiceImpl extends ServiceImpl<BaseMapper<User>, User> impleme
     private RedisUtil redisUtil;
 
     @Override
-    public R updateUser(User user) {
-        return null;
-    }
-
-    @Override
     public Result<LoginRes> login(LoginReq loginReq) {
     log.info("登录请求:{}", JSON.toJSONString(loginReq));
 
@@ -46,7 +43,7 @@ public class UserServiceImpl extends ServiceImpl<BaseMapper<User>, User> impleme
     User user = userMapper.selectOne(queryWrapper);
     if(ObjectUtils.isEmpty(user)){
         loginRes.setLoginStatus(false);
-        loginRes.setFailMessage("用户名不存在,请先注册");
+        loginRes.setMessage("用户名不存在,请先注册");
         return Result.fail(loginRes);
     }
     //再检验密码是否正确
@@ -57,7 +54,7 @@ public class UserServiceImpl extends ServiceImpl<BaseMapper<User>, User> impleme
     user = userMapper.selectOne(queryWrapper);
     if (ObjectUtils.isEmpty(user)){
         loginRes.setLoginStatus(false);
-        loginRes.setFailMessage("用户名或密码错误");
+        loginRes.setMessage("用户名或密码错误");
         return Result.fail(loginRes);
     }
     //使用JWT生成token,存到redis
@@ -65,8 +62,25 @@ public class UserServiceImpl extends ServiceImpl<BaseMapper<User>, User> impleme
     redisUtil.setObject(RedisKeyPreEnum.TOKEN_PRE + user.getUserid(),token);
 
     loginRes.setToken(token);
-    loginRes.setFailMessage("登陆成功");
+    loginRes.setMessage("登陆成功");
     loginRes.setLoginStatus(true);
     return Result.success(loginRes);
+    }
+
+    @Override
+    public Result<RegisterRes> register(RegisterReq registerReq) {
+        log.info("注册请求:{}", JSON.toJSONString(registerReq));
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.and(qw-> qw.eq("userid",registerReq.getUserid())
+                    .or(qwCard-> qwCard.eq("id_card",registerReq.getIdCard())));
+        //构造RegisterRes
+        RegisterRes registerRes = new RegisterRes();
+        //先检验用户是否存在
+        User user = userMapper.selectOne(queryWrapper);
+        if(!ObjectUtils.isEmpty(user)){
+            registerRes.setStatus(false);
+            registerRes.setMessage("用户名已存在或身份证号不正确，请修改用户名或核对身份证号");
+        }
+        return null;
     }
 }

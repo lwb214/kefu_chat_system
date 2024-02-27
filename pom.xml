@@ -101,6 +101,12 @@
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--redisson依赖-->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.26.0</version>
+        </dependency>
     </dependencies>
 
     <build>
