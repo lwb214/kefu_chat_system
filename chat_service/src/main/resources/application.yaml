@@ -25,3 +25,19 @@ spring:
       port: 6379
       database: 0
       password: 123456
+  # 连接Kafka
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    # 生产者 key value的序列化方式
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      # 配置消费者消息offset是否自动重置(消费者重连会能够接收最开始的消息)
+      auto-offset-reset: earliest
+      value-deserializer:  org.springframework.kafka.support.serializer.JsonDeserializer
+      #指定消费者组的 group_id
+      group-id: kafka-chat
+kafka:
+    topic:
+      my-topic: my-topic
+      my-topic2: my-topic2

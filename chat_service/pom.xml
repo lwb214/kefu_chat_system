@@ -23,6 +23,10 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.100.Final</version>
         </dependency>
-
+        <!--kafka依赖-->
+        <dependency>
+        <groupId>org.springframework.kafka</groupId>
+        <artifactId>spring-kafka</artifactId>
+        </dependency>
     </dependencies>
 </project>
