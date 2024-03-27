@@ -14,7 +14,6 @@ import com.kefu.mapper.UserMapper;
 import com.kefu.mapper.entity.User;
 import com.kefu.service.IUserService;
 import com.kefu.util.JwtUtil;
-import com.kefu.util.R;
 import com.kefu.util.RedisUtil;
 import com.kefu.util.Result;
 import lombok.extern.slf4j.Slf4j;
